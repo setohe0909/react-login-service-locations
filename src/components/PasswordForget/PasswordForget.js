@@ -1,15 +1,12 @@
 import React, { Component } from 'react';
-import { withRouter } from 'react-router-dom';
+import { Link } from 'react-router-dom';
 
-import { SignUpLink } from './SignUp';
-import { auth } from '../firebase';
-import * as routes from '../constants/routes';
+import { auth } from '../../firebase';
 
-const SignInPage = ({ history }) =>
+const PasswordForgetPage = () =>
   <div>
-    <h1>SignIn</h1>
-    <SignInForm history={history} />
-    <SignUpLink />
+    <h1>PasswordForget</h1>
+    <PasswordForgetForm />
   </div>
 
 const byPropKey = (propertyName, value) => () => ({
@@ -18,11 +15,10 @@ const byPropKey = (propertyName, value) => () => ({
 
 const INITIAL_STATE = {
   email: '',
-  password: '',
   error: null,
 };
 
-class SignInForm extends Component {
+class PasswordForgetForm extends Component {
   constructor(props) {
     super(props);
 
@@ -30,19 +26,11 @@ class SignInForm extends Component {
   }
 
   onSubmit = (event) => {
-    const {
-      email,
-      password,
-    } = this.state;
+    const { email } = this.state;
 
-    const {
-      history,
-    } = this.props;
-
-    auth.doSignInWithEmailAndPassword(email, password)
+    auth.doPasswordReset(email)
       .then(() => {
         this.setState(() => ({ ...INITIAL_STATE }));
-        history.push(routes.HOME);
       })
       .catch(error => {
         this.setState(byPropKey('error', error));
@@ -54,30 +42,21 @@ class SignInForm extends Component {
   render() {
     const {
       email,
-      password,
       error,
     } = this.state;
 
-    const isInvalid =
-      password === '' ||
-      email === '';
+    const isInvalid = email === '';
 
     return (
       <form onSubmit={this.onSubmit}>
         <input
-          value={email}
+          value={this.state.email}
           onChange={event => this.setState(byPropKey('email', event.target.value))}
           type="text"
           placeholder="Email Address"
         />
-        <input
-          value={password}
-          onChange={event => this.setState(byPropKey('password', event.target.value))}
-          type="password"
-          placeholder="Password"
-        />
         <button disabled={isInvalid} type="submit">
-          Sign In
+          Reset My Password
         </button>
 
         { error && <p>{error.message}</p> }
@@ -86,8 +65,14 @@ class SignInForm extends Component {
   }
 }
 
-export default withRouter(SignInPage);
+const PasswordForgetLink = () =>
+  <p>
+    <Link to="/pw-forget">Forgot Password?</Link>
+  </p>
+
+export default PasswordForgetPage;
 
 export {
-  SignInForm,
+  PasswordForgetForm,
+  PasswordForgetLink,
 };
