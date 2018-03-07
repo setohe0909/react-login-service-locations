@@ -3,7 +3,7 @@
 
 RLSL is a solucion focus in the next requirement, all user can use all workflow to get acces with login and determinate the distance amog an initial point and a final one.
 
-## Getting started
+## Getting started 💻
 
 Execute the followind terminal codes:
 
