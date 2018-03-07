@@ -1,31 +1,19 @@
 {
-  "name": "react-login-services-locations",
-  "version": "0.0.1",
-  "author": "seto",
-  "license": "MIT",
+  "name": "react-login-services-maps",
+  "version": "0.1.0",
   "private": true,
   "dependencies": {
-    "firebase": "^4.9.0",
-    "history": "^1.17.0",
-    "load-google-maps-api": "^1.0.1",
+    "firebase": "^4.10.1",
+    "prop-types": "^15.6.1",
     "react": "^16.2.0",
     "react-dom": "^16.2.0",
-    "react-redux": "^5.0.6",
-    "react-router": "^4.2.0",
     "react-router-dom": "^4.2.2",
-    "react-scripts": "1.0.17",
-    "redux": "^3.7.2",
-    "redux-logger": "^3.0.6",
-    "redux-promise-middleware": "^5.0.0",
-    "redux-thunk": "^2.2.0"
+    "react-scripts": "1.1.1"
   },
   "scripts": {
     "start": "react-scripts start",
     "build": "react-scripts build",
     "test": "react-scripts test --env=jsdom",
     "eject": "react-scripts eject"
-  },
-  "devDependencies": {
-    "babel-plugin-transform-decorators": "^6.24.1"
   }
 }
