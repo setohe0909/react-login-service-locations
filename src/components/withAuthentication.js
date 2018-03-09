@@ -1,5 +1,5 @@
 import React from 'react';
-import PropTypes from 'prop-types';
+import { connect } from 'react-redux';
 
 import { firebase } from '../firebase';
 
@@ -13,17 +13,13 @@ const withAuthentication = (Component) => {
       };
     }
 
-    getChildContext() {
-      return {
-        authUser: this.state.authUser,
-      };
-    }
+    componentDidMount() {      
+      const { onSetAuthUser } = this.props;
 
-    componentDidMount() {
       firebase.auth.onAuthStateChanged(authUser => {
         authUser
-          ? this.setState(() => ({ authUser }))
-          : this.setState(() => ({ authUser: null }));
+        ? onSetAuthUser(authUser)
+        : onSetAuthUser(null);
       });
     }
 
@@ -34,11 +30,11 @@ const withAuthentication = (Component) => {
     }
   }
 
-  WithAuthentication.childContextTypes = {
-    authUser: PropTypes.object,
-  };
+  const mapDispatchToProps = (dispatch) => ({
+    onSetAuthUser: (authUser) => dispatch({ type: 'AUTH_USER_SET', authUser }),
+  });
 
-  return WithAuthentication;
+  return connect(null, mapDispatchToProps)(WithAuthentication);
 }
 
 export default withAuthentication;
