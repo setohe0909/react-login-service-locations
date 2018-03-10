@@ -37,23 +37,40 @@ class HomePage extends Component {
     const { map } = this.props;
 
     return (
-      <div>
-        <div className='add'>
-          <input className='form-control' 
-                  type='text' 
-                  placeholder='Origin Address' 
-                  name='origen' 
-                  value={ this.state.origen } 
-                  onChange={ this.handleChange }/>
-          <input className='form-control' 
-                type='text' 
-                placeholder='Destination address' 
-                name='destino' 
-                value={ this.state.destino } 
-                onChange={ this.handleChange }/>
+      <div className='grid'>
+      <h1 className='text--center title'>Calculate 🤖</h1>
+          <div  className='form login'>
+            <div class='form__field'>
+              <label for='login__username'>
+                <svg class='icon'>
+                      <use link='http://www.w3.org/1999/xlink' href='#user'></use>
+                </svg>
+                  <span class='hidden'>Email</span>
+              </label>
+              <input className='form-control' 
+                      type='text' 
+                      placeholder='Origin Address' 
+                      name='origen' 
+                      value={ this.state.origen } 
+                      onChange={ this.handleChange }/>
+            </div>
+            <div class='form__field'>
+              <label for='login__username'>
+                <svg class='icon'>
+                      <use link='http://www.w3.org/1999/xlink' href='#user'></use>
+                </svg>
+                  <span class='hidden'>Email</span>
+              </label>
+              <input className='form-control' 
+                    type='text' 
+                    placeholder='Destination address' 
+                    name='destino' 
+                    value={ this.state.destino } 
+                    onChange={ this.handleChange }/>
+            </div>
         </div>
-        <div className='add'>
-          <button className='btn btn-default' 
+        <div class='form__field'>
+          <button className='send' 
             onClick={this.add.bind(this)}>Send!</button>
         </div>
         <div className='add'>

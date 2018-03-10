@@ -11,17 +11,17 @@ function error(){
 	return{
 		type: 'ERR_MAP',
 	}
-}
+};
 
-export function Maps(loc) {
+export function Maps(location) {
 	return function(dispatch) {
 		const gooMap = loadGoogleMapsAPI({
       key:'AIzaSyAwTL0xxa1AofBP27UStLV8uV_-TQUElU0',
       language: 'es'})
 		.then( (googleMaps) => {
 			new googleMaps.DistanceMatrixService().getDistanceMatrix({
-    			origins: [loc.origen],
-    			destinations:[loc.destinations] ,
+    			origins: [location.origen],
+    			destinations:[location.destinations] ,
     			travelMode: 'DRIVING',
   			}, (dr,de) => {
           dispatch(receiveData(dr))

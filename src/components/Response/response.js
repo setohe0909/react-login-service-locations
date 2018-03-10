@@ -17,7 +17,7 @@ export default class Response extends Component {
     if (this.props.map.error) {
       return(
         <div>
-          <div className="add">
+          <div className='sub-title'>
             { content.error }
           </div>
         </div>
@@ -25,18 +25,18 @@ export default class Response extends Component {
     } else if (this.props.map.auth) {
       return (
         <div>
-            <div className="add">
-              { content.distance }: { this.props.map.map.payload.rows[0].elements[0].distance.text }
+            <div className='sub-title'>
+              <strong>{ content.distance }:</strong> { this.props.map.map.payload.rows[0].elements[0].distance.text }  🚙
             </div>
-            <div className="add">
-              { content.time }: { this.props.map.map.payload.rows[0].elements[0].duration.text }
+            <div className='sub-title'>
+              <strong>{ content.time }:</strong>  { this.props.map.map.payload.rows[0].elements[0].duration.text } 🕓
             </div>
           </div>
       );
     } else {
       return(
         <div>
-          <div className="add">
+          <div className='sub-title'>
             { content.welcome }
           </div>
         </div>

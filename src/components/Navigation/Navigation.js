@@ -15,16 +15,20 @@ const Navigation = ({ authUser }) =>
   </div>
 
 const NavigationAuth = () =>
-  <ul>
-    <li><Link to={routes.HOME}>Home</Link></li>
-    <li><Link to={routes.ACCOUNT}>Account</Link></li>
-    <li><SignOutButton /></li>
-  </ul>
+  <nav>
+    <ul>
+      <li><Link to={routes.HOME}>Home</Link></li>
+      <li><Link to={routes.ACCOUNT}>Account</Link></li>
+      <li><SignOutButton /></li>
+    </ul>
+  </nav>
 
 const NavigationNonAuth = () =>
-  <ul>
-    <li><Link to={routes.SIGN_IN}>Sign In</Link></li>
-  </ul>
+  <nav>
+    <ul>
+      <li><Link to={routes.SIGN_IN}>Sign In</Link></li>
+    </ul>
+  </nav>
 
 const mapStateToProps = (state) => ({
   authUser: state.sessionState.authUser,

@@ -4,8 +4,8 @@ import { Link } from 'react-router-dom';
 import { auth } from '../../firebase';
 
 const PasswordForgetPage = () =>
-  <div>
-    <h1>PasswordForget</h1>
+  <div className='grid'>
+    <h1 className='text--center title'>Password Forget 💻</h1>
     <PasswordForgetForm />
   </div>
 
@@ -48,16 +48,26 @@ class PasswordForgetForm extends Component {
     const isInvalid = email === '';
 
     return (
-      <form onSubmit={this.onSubmit}>
-        <input
-          value={this.state.email}
-          onChange={event => this.setState(byPropKey('email', event.target.value))}
-          type="text"
-          placeholder="Email Address"
-        />
-        <button disabled={isInvalid} type="submit">
-          Reset My Password
-        </button>
+      <form className='form login' onSubmit={this.onSubmit}>
+        <div class='form__field'>
+          <label for='login__username'>
+            <svg class='icon'>
+              <use link='http://www.w3.org/1999/xlink' href='#lock'></use>
+            </svg>
+               <span class='hidden'>Email Address</span>
+          </label>
+          <input
+            value={this.state.email}
+            onChange={event => this.setState(byPropKey('email', event.target.value))}
+            type='text'
+            placeholder='Email Address'
+          />
+        </div>
+        <div class='form__field'>
+          <button className='pws_forget' disabled={isInvalid} type='submit'>
+            Reset My Password
+          </button>
+        </div>
 
         { error && <p>{error.message}</p> }
       </form>
@@ -67,7 +77,7 @@ class PasswordForgetForm extends Component {
 
 const PasswordForgetLink = () =>
   <p>
-    <Link to="/pw-forget">Forgot Password?</Link>
+    <Link to='/pw-forget'>Forgot Password?</Link>
   </p>
 
 export default PasswordForgetPage;
