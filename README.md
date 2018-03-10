@@ -26,7 +26,7 @@ And
 
 1- Sign In
 
-![Screenshot](public/screens/signup.png "signup")
+![Screenshot](public/screens/signin.png "signup")
 
 2- Sign Up
 
